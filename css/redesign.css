@@ -6,6 +6,7 @@
   --border: rgba(0, 0, 0, 0.08);
   --accent: #1a1a1a;
   --placeholder: #ececec;
+  --shadow: rgba(0, 0, 0, 0.08);
   --serif: "Young Serif", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --max-w: 1200px;
@@ -21,6 +22,7 @@
     --border: rgba(255, 255, 255, 0.1);
     --accent: #f0ebe1;
     --placeholder: #2a2620;
+    --shadow: rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -95,7 +97,7 @@ a:hover { color: var(--muted); }
   height: 220px;
   border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px var(--shadow);
 }
 .hero-content { max-width: 560px; }
 .tagline {
@@ -160,7 +162,6 @@ a:hover { color: var(--muted); }
   transition: transform 0.2s ease;
 }
 .project-card:hover { transform: translateY(-2px); }
-.project-card.placeholder { opacity: 0.45; }
 .project-media {
   border-radius: 10px;
   overflow: hidden;
@@ -226,7 +227,7 @@ a:hover { color: var(--muted); }
 }
 .cert-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px var(--shadow);
 }
 .cert-card img {
   max-width: 100%;
