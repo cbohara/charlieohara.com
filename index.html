@@ -68,34 +68,45 @@
     <!-- Certifications -->
     <section class="section">
       <h2 class="section-title">Certifications</h2>
-      <p class="section-lede">A running record of what I've taken the time to learn — newest first.</p>
+      <p class="section-lede">I kept the receipts. Every cert I've earned, newest first — tap any to take a closer look.</p>
       <div class="cert-grid">
-        <div class="cert-card"><img src="img/20260501.png" alt="Certification earned May 2026" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20240430.png" alt="Certification earned April 2024" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20240301.png" alt="Certification earned March 2024" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20221029.png" alt="Certification earned October 2022" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20220131.png" alt="Certification earned January 2022" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20220108.png" alt="Certification earned January 2022" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20210601.png" alt="Certification earned June 2021" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20210401.png" alt="Certification earned April 2021" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20210301.png" alt="Certification earned March 2021" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20200902.png" alt="Certification earned September 2020" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20200606.png" alt="Certification earned June 2020" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20190831.png" alt="Certification earned August 2019" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20190628.png" alt="Certification earned June 2019" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20190510.png" alt="Certification earned May 2019" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20190505.png" alt="Certification earned May 2019" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20190106.png" alt="Certification earned January 2019" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20170507.png" alt="Certification earned May 2017" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20170506.png" alt="Certification earned May 2017" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20170414.png" alt="Certification earned April 2017" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20161224.png" alt="Certification earned December 2016" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20161002.png" alt="Certification earned October 2016" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20160810.png" alt="Certification earned August 2016" loading="lazy"></div>
-        <div class="cert-card"><img src="img/20160801.png" alt="Certification earned August 2016" loading="lazy"></div>
+        <button class="cert-card" type="button"><img src="img/20260501.png" alt="Certification earned May 2026" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20240430.png" alt="Certification earned April 2024" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20240301.png" alt="Certification earned March 2024" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20221029.png" alt="Certification earned October 2022" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20220131.png" alt="Certification earned January 2022" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20220108.png" alt="Certification earned January 2022" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20210601.png" alt="Certification earned June 2021" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20210401.png" alt="Certification earned April 2021" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20210301.png" alt="Certification earned March 2021" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20200902.png" alt="Certification earned September 2020" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20200606.png" alt="Certification earned June 2020" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20190831.png" alt="Certification earned August 2019" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20190628.png" alt="Certification earned June 2019" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20190510.png" alt="Certification earned May 2019" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20190505.png" alt="Certification earned May 2019" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20190106.png" alt="Certification earned January 2019" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20170507.png" alt="Certification earned May 2017" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20170506.png" alt="Certification earned May 2017" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20170414.png" alt="Certification earned April 2017" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20161224.png" alt="Certification earned December 2016" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20161002.png" alt="Certification earned October 2016" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20160810.png" alt="Certification earned August 2016" loading="lazy"></button>
+        <button class="cert-card" type="button"><img src="img/20160801.png" alt="Certification earned August 2016" loading="lazy"></button>
       </div>
     </section>
   </main>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Certification viewer">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous certification">&#8249;</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Next certification">&#8250;</button>
+  </dialog>
 
   <footer class="site-footer">
     <div class="container">
@@ -104,5 +115,52 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+  (function () {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.cert-card'));
+    var lightbox = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    var lbCaption = document.getElementById('lightboxCaption');
+    var current = 0;
+
+    function show(i) {
+      current = (i + cards.length) % cards.length;
+      var img = cards[current].querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = img.alt;
+    }
+
+    cards.forEach(function (card, i) {
+      card.addEventListener('click', function () { show(i); lightbox.showModal(); });
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', function () { lightbox.close(); });
+    document.getElementById('lightboxNext').addEventListener('click', function () { show(current + 1); });
+    document.getElementById('lightboxPrev').addEventListener('click', function () { show(current - 1); });
+
+    // Click on the backdrop (outside the image/controls) closes
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) lightbox.close();
+    });
+
+    // Esc & focus-trap are handled natively by <dialog>; we add arrow keys
+    lightbox.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(current + 1);
+      else if (e.key === 'ArrowLeft') show(current - 1);
+    });
+
+    // Swipe navigation on touch devices
+    var touchX = null;
+    lightbox.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    }, { passive: true });
+  })();
+  </script>
 </body>
 </html>
