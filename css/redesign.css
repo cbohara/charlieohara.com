@@ -217,9 +217,6 @@ a:hover { color: var(--muted); }
     gap: 20px;
   }
 }
-@media (min-width: 900px) {
-  .cert-grid { grid-template-columns: repeat(3, 1fr); }
-}
 .cert-card {
   font: inherit;
   color: inherit;
