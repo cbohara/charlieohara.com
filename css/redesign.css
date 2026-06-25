@@ -65,15 +65,32 @@ a:hover { color: var(--muted); }
   font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.015em;
+  white-space: nowrap;
 }
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 24px;
   font-size: 15px;
   font-weight: 500;
   color: var(--fg);
 }
 .nav-links a { transition: color 0.2s; }
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-socials a {
+  display: inline-flex;
+  color: var(--muted);
+}
+.nav-socials a:hover { color: var(--fg); }
+@media (max-width: 480px) {
+  .brand { font-size: 20px; }
+  .nav-links { gap: 16px; }
+  .nav-socials { gap: 16px; }
+}
 
 /* Hero */
 .hero {
@@ -101,29 +118,12 @@ a:hover { color: var(--muted); }
 }
 .hero-content { max-width: 560px; }
 .tagline {
-  font-size: 20px;
-  font-weight: 500;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: var(--fg);
-  margin: 0 0 12px;
-}
-.socials {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-.socials a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: var(--muted);
-  transition: color 0.2s, transform 0.2s;
-}
-.socials a:hover {
-  color: var(--fg);
-  transform: translateY(-2px);
+  margin: 0 0 14px;
 }
 .bio p {
   margin: 0 0 14px;
@@ -364,5 +364,5 @@ a:hover { color: var(--muted); }
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up { animation: none; }
-  .project-card, .cert-card, .socials a { transition: none; }
+  .project-card, .cert-card, .nav-socials a { transition: none; }
 }
