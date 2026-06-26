@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} — Charlie O'Hara{% endblock %}
+{% block description %}{{ post.excerpt }}{% endblock %}
+
+{% block content %}
+<article class="container container-narrow post">
+  <header class="post-header">
+    <a href="/#writing" class="post-back">← All posts</a>
+    <time class="post-date" datetime="{{ post.date }}">{{ post.date_display }}</time>
+    <h1 class="post-title">{{ post.title }}</h1>
+    {% if post.excerpt %}<p class="post-lede">{{ post.excerpt }}</p>{% endif %}
+  </header>
+  <div class="post-body">
+    {{ post.content }}
+  </div>
+</article>
+{% endblock %}

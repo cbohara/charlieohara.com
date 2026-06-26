@@ -1,2 +1,5 @@
 .DS_Store
 .idea/
+output/
+.venv/
+__pycache__/

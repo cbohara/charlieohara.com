@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Charlie O'Hara — Data Engineer · MLOps{% endblock %}</title>
+  <meta name="description" content="{% block description %}Charlie O'Hara — Data Engineer & MLOps. Pipelines, models in production, and the occasional write-up.{% endblock %}">
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="/css/redesign.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="/">Charlie O'Hara</a>
+      <div class="nav-links">
+        <a href="/#writing" class="nav-link">Writing</a>
+        <a href="/#certifications" class="nav-link">Certifications</a>
+        <a href="/#projects" class="nav-link">Projects</a>
+        <a class="nav-resume" href="/img/charlie_brooke_ohara_resume.pdf">Résumé</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Charlie O'Hara</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
