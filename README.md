@@ -8,20 +8,37 @@ blog posts, built by a small Python static site generator and deployed to GitHub
 ## Local Development
 
 ```bash
-# First-time setup
+# First-time setup (once)
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-
-# Build the site into output/
-python build.py
-
-# Preview at http://localhost:8000
-python -m http.server -d output
 ```
 
+### Preview the whole site locally (no push needed)
+
+Build, then serve the `output/` folder — this is the exact same site that gets
+deployed, so you can check everything before committing:
+
+```bash
+python build.py                       # render templates + posts -> output/
+python -m http.server -d output 8000  # open http://localhost:8000
+```
+
+Or as a one-liner that rebuilds and serves:
+
+```bash
+python build.py && python -m http.server -d output 8000
+```
+
+After editing a template, CSS, or a post, re-run `python build.py` and refresh the
+browser. (Static-file serving doesn't auto-rebuild — the `build.py` step is what
+regenerates the HTML.)
+
+If you used the venv without activating it, prefix the commands with `.venv/bin/`,
+e.g. `.venv/bin/python build.py`.
+
 `output/` and `.venv/` are gitignored — nothing generated is committed. The site is
-built fresh by GitHub Actions on every push.
+built fresh by GitHub Actions on every push to `main`.
 
 ## Writing a New Post
 
