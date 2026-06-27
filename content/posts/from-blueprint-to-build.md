@@ -4,6 +4,10 @@ date: 2026-06-26
 excerpt: "How I stopped writing code at the keyboard and started writing blueprints instead — and the handful of markdown files I rigged up to run the rest: baton."
 ---
 
+<img src="/img/baton.png" alt="Two robot hands passing a rainbow baton — spec, test, implement, review" style="width:100%;border-radius:8px;margin-bottom:1.5rem;">
+
+**[Check out baton on GitHub →](https://github.com/cbohara/baton)**
+
 For a while now I've wanted to hand a whole task off to an AI agent and just walk away. Describe what I want, go get a coffee, come back to working code. I had a hunch we weren't quite there yet. But I also had a hunch we were a lot closer than my copilot-style, back-and-forth chatting was letting me get.
 
 The thing that nudged me forward was a blog post a coworker shared, [The 8 Levels of Agentic Engineering](https://www.bassimeledath.com/blog/levels-of-agentic-engineering). It lays out a staircase, from chatting with an assistant at the bottom all the way up to systems where agents do the work on their own. It was a great map. The trouble was that it stayed a map. I could see where I wanted to go, but I couldn't picture the actual steps.
@@ -20,7 +24,7 @@ That made sense when I was the one writing every line. It makes a lot less sense
 
 ## The workflow
 
-So I built it. There's barely anything to install, which I'll get to in a bit. But the part worth keeping was never the code anyway. It's the shape: the same four steps every time, spec, tests, implement, review. (I've started calling it STIR.) `baton` is just my own take on that shape, one slash command and a few agent files, all markdown, sitting in my Claude Code setup. I run a version at work too, wired up a little differently for my team and the tools there. You point baton at a GitHub issue and it takes that issue from an approved plan all the way to a pull request worth reviewing:
+So I built it. There's barely anything to install, which I'll get to in a bit. But the part worth keeping was never the code anyway. It's the shape: the same four steps every time, spec, tests, implement, review. (I've started calling it STIR.) [`baton`](https://github.com/cbohara/baton) is just my own take on that shape, one slash command and a few agent files, all markdown, sitting in my Claude Code setup. I run a version at work too, wired up a little differently for my team and the tools there. You point baton at a GitHub issue and it takes that issue from an approved plan all the way to a pull request worth reviewing:
 
 ```
 /baton 163
@@ -103,6 +107,6 @@ The honest result of all this is that my days feel different. The energy that us
 
 What that buys me is simple. I get to spend my time on *what* I'm building and *why*, and a lot less on the fiddly *how*.
 
-If any of this sounds useful, `baton` is up on GitHub. Clone it, fork it, strip it down to the parts you like, and make it your own. I built it to scratch my own itch, but I'm sharing it in case it helps someone else who has seen the staircase and wasn't sure how to take the first step.
+If any of this sounds useful, [`baton` is up on GitHub](https://github.com/cbohara/baton). Clone it, fork it, strip it down to the parts you like, and make it your own. I built it to scratch my own itch, but I'm sharing it in case it helps someone else who has seen the staircase and wasn't sure how to take the first step.
 
 Write the blueprint, and let the crew build. Have fun with it.
