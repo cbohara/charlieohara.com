@@ -1,5 +1,5 @@
 ---
-title: "From Blueprint to Build"
+title: "From Blueprint to Build with Baton"
 date: 2026-06-26
 excerpt: "How I stopped writing code at the keyboard and started writing blueprints instead — and the handful of markdown files I rigged up to run the rest: baton."
 ---
