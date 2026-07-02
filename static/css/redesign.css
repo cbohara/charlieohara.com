@@ -356,7 +356,8 @@ a:hover { color: var(--muted); }
 .post-medium a:hover { color: var(--fg); }
 
 /* Markdown body typography */
-.post-body { font-size: 17px; line-height: 1.7; }
+.post-body { font-size: 17px; line-height: 1.7; overflow-wrap: break-word; }
+.post-body a { overflow-wrap: anywhere; }
 @media (min-width: 576px) {
   .post-body { font-size: 18px; line-height: 1.75; }
 }
