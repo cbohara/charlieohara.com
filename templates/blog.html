@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Blog — Charlie O'Hara{% endblock %}
+{% block description %}All blog posts by Charlie O'Hara — data engineering, MLOps, and the occasional fundamentals write-up.{% endblock %}
+
+{% block content %}
+<div class="container container-narrow blog-listing">
+  <a href="/" class="post-back">← Home</a>
+  <h1 class="page-title">Blog</h1>
+  <p class="page-subtitle">All posts, newest first.</p>
+  <div class="post-list">
+    {% for post in posts %}
+    <a href="{{ post.url }}" class="post-card">
+      <time class="post-date" datetime="{{ post.date }}">{{ post.date_display }}</time>
+      <h3 class="post-card-title">{{ post.title }}</h3>
+      {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt }}</p>{% endif %}
+      <span class="post-read-more">Read →</span>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

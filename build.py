@@ -51,6 +51,7 @@ def load_posts():
                 "date": post.get("date"),
                 "date_display": format_date(post.get("date")),
                 "excerpt": post.get("excerpt", ""),
+                "medium": post.get("medium"),
                 "slug": md_file.stem,
                 "content": html_content,
                 "url": f"/posts/{md_file.stem}/",
@@ -75,12 +76,17 @@ def build():
     index_html = env.get_template("index.html").render(posts=posts, current_page="home")
     (OUTPUT_DIR / "index.html").write_text(index_html)
 
+    # --- Full archive at /blog/ (homepage shows only the most recent) ---
+    blog_html = env.get_template("blog.html").render(posts=posts, current_page="blog")
+    (OUTPUT_DIR / "blog").mkdir(parents=True)
+    (OUTPUT_DIR / "blog" / "index.html").write_text(blog_html)
+
     # --- Each post gets its own page at /posts/<slug>/ ---
     post_template = env.get_template("post.html")
     for post in posts:
         post_dir = OUTPUT_DIR / "posts" / post["slug"]
         post_dir.mkdir(parents=True)
-        post_html = post_template.render(post=post, current_page="writing")
+        post_html = post_template.render(post=post, current_page="blog")
         (post_dir / "index.html").write_text(post_html)
 
     # --- Copy static assets to output root (css/, js/, img/) ---

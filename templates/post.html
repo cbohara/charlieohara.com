@@ -6,9 +6,10 @@
 {% block content %}
 <article class="container container-narrow post">
   <header class="post-header">
-    <a href="/#writing" class="post-back">← All posts</a>
+    <a href="/blog/" class="post-back">← All posts</a>
     <time class="post-date" datetime="{{ post.date }}">{{ post.date_display }}</time>
     <h1 class="post-title">{{ post.title }}</h1>
+    {% if post.medium %}<p class="post-medium">Originally posted on <a href="{{ post.medium }}">Medium</a></p>{% endif %}
     {% if post.excerpt %}<p class="post-lede">{{ post.excerpt }}</p>{% endif %}
   </header>
   <div class="post-body">

@@ -4,6 +4,36 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
 
+// Bounce demo video: the raw recording is slow, so default it to 2x on first play.
+// Talks to the embed via YouTube's postMessage protocol (needs enablejsapi=1 on the
+// iframe src); only forces the rate once so viewers can still slow it back down.
+(function () {
+  var iframe = document.getElementById('bounce-demo');
+  if (!iframe) return;
+
+  var YT_ORIGIN = 'https://www.youtube.com';
+  var forced = false;
+
+  window.addEventListener('message', function (e) {
+    if (forced || e.origin !== YT_ORIGIN || typeof e.data !== 'string') return;
+    var d;
+    try { d = JSON.parse(e.data); } catch (err) { return; }
+    if (d.info && d.info.playerState === 1) { // 1 = playing
+      forced = true;
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'setPlaybackRate', args: [2] }),
+        YT_ORIGIN
+      );
+    }
+  });
+
+  function listen() {
+    iframe.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'bounce-demo' }), YT_ORIGIN);
+  }
+  iframe.addEventListener('load', listen);
+  listen();
+})();
+
 // Certification lightbox (homepage only)
 (function () {
   var cards = Array.prototype.slice.call(document.querySelectorAll('.cert-card'));
