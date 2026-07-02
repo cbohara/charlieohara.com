@@ -22,7 +22,7 @@ For most of my career, software has not worked that way. Depending on the team a
 
 ## The workflow
 
-baton runs the same four phases every time: spec, tests, implement, review. You point it at a GitHub issue and it takes that issue from an approved plan to a pull request worth reviewing:
+baton runs the same four phases every time: spec, tests, implement, review. I've been calling it STIR. You point it at a GitHub issue and it takes that issue from an approved plan to a pull request worth reviewing:
 
 ```
 /baton 163
