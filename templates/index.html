@@ -28,10 +28,10 @@
 
   {% if posts %}
   <!-- Blog -->
-  <section class="section" id="writing">
+  <section class="section" id="blog">
     <h2 class="section-title">Blog</h2>
     <div class="post-list">
-      {% for post in posts %}
+      {% for post in posts[:4] %}
       <a href="{{ post.url }}" class="post-card">
         <time class="post-date" datetime="{{ post.date }}">{{ post.date_display }}</time>
         <h3 class="post-card-title">{{ post.title }}</h3>
@@ -40,6 +40,9 @@
       </a>
       {% endfor %}
     </div>
+    {% if posts|length > 4 %}
+    <p class="view-all"><a href="/blog/">View all posts →</a></p>
+    {% endif %}
   </section>
   {% endif %}
 
@@ -49,15 +52,28 @@
     <div class="project-grid">
       <article class="project-card fade-up">
         <div class="project-media">
+          <img src="/img/baton.png" alt="Two robot hands passing a rainbow baton" loading="lazy">
+        </div>
+        <h3 class="project-title">Baton</h3>
+        <p class="project-desc">A relay crew of AI agents — spec, test, implement, review. One slash command takes a GitHub issue to a pull request.</p>
+        <div class="project-links">
+          <a href="https://github.com/cbohara/baton" target="_blank" rel="noopener">GitHub →</a>
+          <a href="/posts/from-blueprint-to-build/">Read the post →</a>
+        </div>
+      </article>
+      <article class="project-card fade-up">
+        <div class="project-media">
           <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/tum6VbSDJkA" title="Bounce demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe id="bounce-demo" src="https://www.youtube.com/embed/tum6VbSDJkA?enablejsapi=1" title="Bounce demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
         <h3 class="project-title">Bounce</h3>
         <p class="project-desc">ChatGPT for Slack. Bounce ideas off an AI teammate without leaving the channel.</p>
         <div class="project-links">
           <a href="https://ruvqg35v4n27dgg7yo74s7kowi0qvbjr.lambda-url.us-east-1.on.aws/?" target="_blank" rel="noopener">Add to Slack →</a>
+          <a href="https://github.com/cbohara/bounce" target="_blank" rel="noopener">GitHub →</a>
           <a href="https://www.producthunt.com/products/chatgpt-for-slack" target="_blank" rel="noopener">Product Hunt →</a>
+          <a href="/posts/real-world-ai-chatgpt-for-slack-running-on-aws-serverless/">Read the post →</a>
         </div>
       </article>
     </div>
