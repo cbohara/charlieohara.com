@@ -18,19 +18,19 @@ So I built [baton](https://github.com/cbohara/baton), a workflow for Claude Code
 
 I grew up around blueprints. My dad built homes, and my husband is a civil engineer, so I have spent a lot of my life around people whose whole job is to get the plan right before anyone picks up a tool. They will be the first to tell you that the quality of a house is decided long before the foundation is poured. If the blueprint is wrong, even the best crew will build the wrong house.
 
-For most of my career, software has not worked that way. Depending on the team and the deadline, there might be some architecture work up front, but the actual task usually got figured out at the keyboard, one decision at a time, while I was already typing. That approach made sense when I was the one writing every line. Now that an agent is doing the typing, the quality of what I get back depends on how well I describe what I want, not on how well I write code. The blueprint matters again.
+For most of my career, software has not worked that way. Depending on the team and the deadline, there might be some architecture work up front, but the actual task usually got figured out at the keyboard, one decision at a time, while I was already typing. That approach made sense when I was the one writing every line. Now that an agent is doing the typing, the quality of what I get back depends on how well I describe what I want, not on how well I write code.
 
 ## The workflow
 
-baton runs the same four phases every time: spec, tests, implement, review. I've been calling it STIR. You point it at a GitHub issue and it takes that issue from an approved plan to a pull request worth reviewing:
+baton runs the same five phases every time: spec, tests, implement, review, ship. I've been calling it STIRS. You point it at a GitHub issue and it takes that issue from an approved plan to a merged pull request:
 
 ```
 /baton 163
 
-Spec → Tests → Implement → Review
+Spec → Tests → Implement → Review → Ship
 ```
 
-I named it baton because each phase does its piece and passes the work to the next, like runners in a relay race. The spec hands off to the tests, the tests hand off to the implementer, and the implementer hands off to the reviewer. A final anchor leg opens the pull request, and it can even auto-merge once CI passes if I want the full walk-away experience. (Fun side note- a baton is also what a conductor uses to keep an orchestra full of specialists playing in time without playing a single note themselves, which fits too.) I run a version of this at work as well, wired up a little differently for my team and the tools there.
+I named it baton because each phase does its piece and passes the work to the next, like runners in a relay race. The spec hands off to the tests, the tests hand off to the implementer, and the implementer hands off to the reviewer. The anchor leg, ship, opens the pull request and lands it. (Fun side note - a baton is also what a conductor uses to keep an orchestra full of specialists playing in time without playing a single note themselves, which fits too.) I run a version of this at work as well, wired up a little differently for my team and the tools there.
 
 There is one rule that makes the whole thing work: baton never writes a line of code itself. Think of it like a general contractor. Growing up, my dad didn't pour every foundation or hang every door. He ran the crew and made sure the house matched the plans. baton does the same thing for a GitHub issue. It brings in each agent at the right moment and holds all of them to the same spec.
 
@@ -50,7 +50,11 @@ Every spec comes back in the same shape:
 - **Implementation** — one line per file describing what changes. No code, just intent.
 - **Tests** — a short table: each test, what it proves, and whether the file is new or already exists.
 
-Then the spec-writer stops and waits. When I am running it interactively, nothing moves forward until I read the spec and give it the go-ahead. I am not reading it for syntax — I am reading to make sure it solves the right problem within the right boundaries. I either approve it or send it back with notes. Once I approve it, the spec becomes the contract that every phase after it answers to.
+Before that spec gets anywhere near me, a *spec-critic* agent reads it cold and sorts what it finds into two piles. Anything with one right answer — a vague criterion, a missing edge case, a file the boundaries forbid — goes back to the spec-writer, and I never see it. What is left are the real forks, where two reasonable readings would build two different things. It caps those at three and labels each one cheap to reverse or a one-way door.
+
+That last label is what finally got me my coffee. By default baton no longer stops to ask. It takes the critic's recommendation on the cheap-to-reverse calls and writes down what it assumed — the question, the options, what it picked, and why — in the spec, in the issue, and near the top of the pull request. The reviewer is told to read that section with extra suspicion, because it is the one part of the contract no human signed off on. Two things still stop the run and wait for me: a spec too vague to be a contract at all, and a one-way door like a schema change or a public interface.
+
+When I do want to read every spec before a test gets written, I flip it to ask mode and it stops there instead. Either way, the approved spec is the contract every phase after it answers to.
 
 ## Tests
 
@@ -76,29 +80,37 @@ A separate *reviewer* agent comes in fresh and reads the diff three ways: for co
 
 Even as a solo developer, this gives me the second set of eyes I would otherwise get from a coworker on a team.
 
+## Ship
+
+The last leg is the one I used to do by hand at the end of a good day: open the pull request, wait around, merge it. baton writes that pull request itself — what changed, what the tests prove, and any decisions it made on my behalf copied in near the top, so `git log` leads back to them. It links the issue, so merging closes the thread.
+
+Then it lands it. By default it merges right there, which is the whole walk-away promise: fire it off, go do something else, come back to a merged main with the pull request as the record. When I want an independent run on a clean machine, I point it at auto-merge instead and CI does the merging once the checks go green. And when I would rather look first, I tell it to leave the pull request open for me.
+
 ## Barely anything to install
 
-My favorite part of baton is how little there is to it. There is no binary, no package to install, no background daemon, and no database. Almost the whole thing is markdown: one slash command and a few agent files in my Claude Code config.
+My favorite part of baton is how little there is to it. There is no binary, no package to install, no background daemon, and no database. The whole thing is markdown: one slash command and a few agent files in my Claude Code config.
 
 ```
 .claude/
   commands/
-    baton.md                 # the slash command that runs the phases
+    baton.md
   agents/
     baton-code-explorer.md
     baton-spec-writer.md
+    baton-spec-critic.md
     baton-test-writer.md
     baton-implementer.md
     baton-reviewer.md
-    baton-qa-browser.md      # web apps only
 ```
 
-If I want to change how a phase behaves, I open its markdown file and edit the prose. That's it. There is no clever machinery to keep in my head, which means I will still understand how it works six months from now.
+If I want to change how a phase behaves, I open its markdown file and edit the prose. That's it.
 
-The one piece that isn't markdown is a small zsh helper script that keeps separate runs from stepping on each other. It gives each issue its own git worktree off to the side, so an agent's branch switching and commits never touch my main checkout, and I can kick off a few issues at once. Background runs stream their progress to a plain log file on disk, and if a run stalls partway through, its worktree is still sitting there, so I can open it up and pick up where it left off instead of starting over.
+That is all of it. An earlier version had a zsh script wrapped around the outside to set each run up, and it worked, but it was one more thing to install and keep working on every machine I use. So I moved that job into the workflow itself. A setup phase does it now, from inside whatever session I am already in, in markdown like the rest.
+
+What it sets up is a directory per issue, off to the side and out of my way. Inside is a git worktree, so an agent's branch switching and commits never touch my main checkout and I can have a few issues going at once. Next to it is a log file with one plain line per phase. If a run stalls halfway through, the worktree is still sitting there and the log says exactly where it stopped, so running `/baton 163` again picks up where it left off instead of starting over.
 
 ## Where my time goes now
 
 My days feel different now. The energy that used to go into writing code, and then into steering an agent through a chat to write code, goes into the blueprint instead: the goal, the boundaries, the acceptance criteria. The crew handles the rest. I get to spend my time on *what* I am building and *why*, and a lot less on the fiddly *how*.
 
-If any of this sounds useful, [baton is up on GitHub](https://github.com/cbohara/baton). Clone it, fork it, strip it down to the parts you like, and make it your own. I built it to scratch my own itch, but I am sharing it in case it helps someone else who has seen the staircase and wasn't sure how to take the first step. Write the blueprint, let the crew build, and have fun with it!
+If any of this sounds useful, [baton is up on GitHub](https://github.com/cbohara/baton). Clone it, fork it, strip it down to the parts you like, and make it your own. I built it to scratch my own itch, but I am sharing it in case it helps someone else. Write the blueprint, let the crew build, and have fun with it!
