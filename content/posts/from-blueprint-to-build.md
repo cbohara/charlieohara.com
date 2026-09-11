@@ -101,9 +101,7 @@ My favorite part of baton is how little there is to it. There is no binary, no p
 
 If I want to change how a phase behaves, I open its markdown file and edit the prose. That's it.
 
-That is all of it. An earlier version had a zsh script wrapped around the outside to set each run up, and it worked, but it was one more thing to install and keep working on every machine I use. So I moved that job into the workflow itself. A setup phase does it now, from inside whatever session I am already in, in markdown like the rest.
-
-What it sets up is a directory per issue, off to the side and out of my way. Inside is a git worktree, so an agent's branch switching and commits never touch my main checkout and I can have a few issues going at once. Next to it is a log file with one plain line per phase. If a run stalls halfway through, the worktree is still sitting there and the log says exactly where it stopped, so running `/baton 163` again picks up where it left off instead of starting over.
+That is all of it. Even the setup is markdown: a setup phase builds a directory per issue, off to the side and out of my way. Inside is a git worktree, so an agent's branch switching and commits never touch my main checkout and I can have a few issues going at once. Next to it is a log file with one plain line per phase. If a run stalls halfway through, the worktree is still sitting there and the log says exactly where it stopped, so running `/baton 163` again picks up where it left off instead of starting over.
 
 ## Where my time goes now
 
