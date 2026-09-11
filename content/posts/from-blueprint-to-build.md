@@ -1,10 +1,10 @@
 ---
 title: "From Blueprint to Build with Baton"
 date: 2026-06-26
-excerpt: "How two blog posts convinced me to stop writing code at the keyboard and start writing blueprints instead — and the small crew of AI agents I built to run the rest."
+excerpt: "I write the blueprint. A crew of AI agents builds code worth reviewing."
 ---
 
-<img src="/img/baton.jpg" alt="Two robot hands passing a rainbow baton — spec, test, implement, review" style="width:100%;border-radius:8px;margin-bottom:1.5rem;">
+<img src="/img/baton.jpg" alt="Two robot hands passing a rainbow baton — spec, tests, implement, review, ship" style="width:100%;border-radius:8px;margin-bottom:1.5rem;">
 
 **[Check out baton on GitHub →](https://github.com/cbohara/baton)**
 
@@ -22,7 +22,7 @@ For most of my career, software has not worked that way. Depending on the team a
 
 ## The workflow
 
-baton runs the same five phases every time: spec, tests, implement, review, ship. I've been calling it STIRS. You point it at a GitHub issue and it takes that issue from an approved plan to a merged pull request:
+Every run is the same five phases, in the same order. I've been calling it STIRS. You point it at a GitHub issue and it takes that issue from an approved plan to a merged pull request:
 
 ```
 /baton 163
