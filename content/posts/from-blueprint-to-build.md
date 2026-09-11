@@ -111,6 +111,6 @@ What it sets up is a directory per issue, off to the side and out of my way. Ins
 
 ## Where my time goes now
 
-My days feel different now. The energy that used to go into writing code, and then into steering an agent through a chat to write code, goes into the blueprint instead: the goal, the boundaries, the acceptance criteria. The crew handles the rest. I get to spend my time on *what* I am building and *why*, and a lot less on the fiddly *how*.
+My days feel different now. The energy that used to go into writing code, and then into steering an agent through a chat to write code, goes into the blueprint instead: the goal, the boundaries, the acceptance criteria. The crew handles the rest. I get to spend my time on *what* I am building and *why*, and a lot less on the *how*.
 
 If any of this sounds useful, [baton is up on GitHub](https://github.com/cbohara/baton). Clone it, fork it, strip it down to the parts you like, and make it your own. I built it to scratch my own itch, but I am sharing it in case it helps someone else. Write the blueprint, let the crew build, and have fun with it!
