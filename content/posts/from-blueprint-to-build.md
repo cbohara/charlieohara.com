@@ -50,11 +50,7 @@ Every spec comes back in the same shape:
 - **Implementation** — one line per file describing what changes. No code, just intent.
 - **Tests** — a short table: each test, what it proves, and whether the file is new or already exists.
 
-Before that spec gets anywhere near me, a *spec-critic* agent reads it cold and sorts what it finds into two piles. Anything with one right answer — a vague criterion, a missing edge case, a file the boundaries forbid — goes back to the spec-writer, and I never see it. What is left are the real forks, where two reasonable readings would build two different things. It caps those at three and labels each one cheap to reverse or a one-way door.
-
-That last label is what finally got me my coffee. By default baton no longer stops to ask. It takes the critic's recommendation on the cheap-to-reverse calls and writes down what it assumed — the question, the options, what it picked, and why — in the spec, in the issue, and near the top of the pull request. The reviewer is told to read that section with extra suspicion, because it is the one part of the contract no human signed off on. Two things still stop the run and wait for me: a spec too vague to be a contract at all, and a one-way door like a schema change or a public interface.
-
-When I do want to read every spec before a test gets written, I flip it to ask mode and it stops there instead. Either way, the approved spec is the contract every phase after it answers to.
+Then the spec-writer stops and waits — when I ask it to. Nothing moves forward until I read the spec and give it the go-ahead. I am not reading it for syntax — I am reading to make sure it solves the right problem within the right boundaries. I either approve it or send it back with notes. Once I approve it, the spec becomes the contract that every phase after it answers to.
 
 ## Tests
 
