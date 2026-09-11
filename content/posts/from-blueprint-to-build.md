@@ -12,7 +12,7 @@ For a while now I have wanted to hand a whole task off to an AI agent, go get a 
 
 I am grateful a coworker shared the blog post that gave me the push I needed: [The 8 Levels of Agentic Engineering](https://www.bassimeledath.com/blog/levels-of-agentic-engineering). It lays out a staircase from chatting with an assistant at the bottom all the way up to systems where agents do the work on their own. I could see where I wanted to go on that staircase, but I could not picture the actual steps to climb it. Shortly after, I read an O'Reilly piece called [How to Write a Good Spec for AI Agents](https://www.oreilly.com/radar/how-to-write-a-good-spec-for-ai-agents/), and everything clicked. Just like an architect hands a builder a blueprint, the most useful thing I can hand an agent is a clear spec. If I write the plan clearly enough, the agent can build from it. I would highly recommend reading both!
 
-So I built [baton](https://github.com/cbohara/baton), a workflow for Claude Code that takes a GitHub issue all the way from a written plan to a pull request that is ready for review. It is one slash command and a handful of agent files, all plain markdown, and it has changed how I spend my days as a developer.
+So I built [baton](https://github.com/cbohara/baton), a workflow that turns a blueprint into a pull request worth reviewing. It is one slash command and a handful of agent files, all plain markdown, and it has changed how I spend my days as a developer.
 
 ## Why the blueprint matters
 
